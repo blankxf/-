@@ -22,6 +22,8 @@
 	     	if(this.pwd=='123456'){
 	     		window.localStorage.setItem('pwd','123456');
 	     		window.location="#/admin"
+	     	}else{
+	     		alert("请输入正确的秘钥")
 	     	}
 	 
 	     }

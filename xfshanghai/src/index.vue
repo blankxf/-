@@ -14,7 +14,7 @@
       <mu-text-field hintText="请输入联系电话" @blur="change(3)" :errorText="kong2" type="number" v-model="phone"/><br>
       人数：
       <mu-text-field hintText="请输入报名人数" @blur="change(4)" :errorText="kong3" type="number"  v-model="num"/><br>
-      <mu-raised-button label="点击报名" class="demo-raised-button" @click="tijiao" secondary />
+      <mu-raised-button label="点击报名" class="demo-raised-button" @click="tijiao" secondary  />
  
      </div>
  </div>

@@ -6,7 +6,13 @@
       <mu-text-field label="请输入微信号" labelFloat v-model="data.weixin"/><br>
       <mu-text-field hintText="请输入电话号码" type="number" v-model="data.phone"/><br>
       <mu-text-field hintText="请输入报名人数" type="number"  v-model="data.num"/><br>
-      <mu-raised-button label="点击修改" class="demo-raised-button" @click="xiugai" secondary/>
+
+      <div class="container">
+            <mu-raised-button label="点击修改" class="demo-raised-button"  @click="xiugai" secondary/><br><br>
+            <mu-raised-button label="返回" href="#/admin" class="demo-raised-button"  primary/>
+    
+      </div>
+    
    
    
 

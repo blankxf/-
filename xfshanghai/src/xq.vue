@@ -17,8 +17,16 @@
           </mu-tr>
         </mu-tbody>
     </mu-table>
-    <mu-pagination :total="total" :current="current" @pageChange="handleClick">
-  </mu-pagination>
+
+
+  
+        <mu-pagination :total="total" :current="current" @pageChange="handleClick">
+        </mu-pagination>
+      <br>
+    <div class="con">
+       <mu-raised-button label="进入后台" @click="login()" class="demo-raised-button"  primary/>
+   </div>
+    
  </div>
 </template>
 <script>
@@ -45,7 +53,18 @@
                     },(err)=>{
 
                 })
-        }
+        },
+        login(){
+         if(window.localStorage.getItem('pwd')=='123456'){
+     
+                window.location="#/admin"
+             
+              }else{
+      
+                window.location="#/login"
+        }  
+     
+      }
       },
      mounted(){   
          var url=this.siteUrl+'all';    
@@ -65,16 +84,20 @@
                        this.total=data.data.length;                             
                     },(err)=>{
 
-                }) 
+         }) 
+
+
+ 
       }
   }
 </script>
 
 <style>
-   h1{
+   h1,.con{
       width: 100%;
       text-align: center;
    }
+
 
 
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>后台管理 <a @click="loginOut">退出</a></h1>  
+    <h1>后台管理 <a @click="loginOut">点击退出</a></h1>  
     <mu-table :showCheckbox="false">
         <mu-thead slot="header" >
           <mu-tr>
@@ -81,7 +81,7 @@
 
     loginOut(){
       window.localStorage.removeItem("pwd");
-      window.location="/#login"
+      window.location="#/login"
     }
   },
     mounted(){
@@ -98,7 +98,19 @@
                     },(err)=>{
 
                 }) 
+
+         if(window.localStorage.getItem('pwd')=='123456'){
+     
+                window.location="#/admin"
+             
+              }else{
+      
+                window.location="#/login"
+        }  
       }
+
+
+
   }
 </script>
 
