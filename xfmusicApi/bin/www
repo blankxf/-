@@ -18,8 +18,20 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+ //创建https服务器
+const https=require("https");
+const fs=require("fs")
+const options={
+    key:fs.readFileSync('cert/213993262440896.key'),
+    cert:fs.readFileSync('cert/213993262440896.pem')
+}
 
-var server = http.createServer(app);
+var server=https.createServer(options,app);
+
+
+
+
+// var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
