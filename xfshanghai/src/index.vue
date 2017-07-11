@@ -3,7 +3,7 @@
        
       <div class="header">
            <img src="./assets/xf.jpg" alt="">
-           <h3>7月30号 许飞"一个梦想"音乐会报名</h3>
+           <h3>{{title}}</h3>
       </div>
      <div class="main">
       昵称：
@@ -17,6 +17,9 @@
       <mu-raised-button label="点击报名" class="demo-raised-button" @click="tijiao" secondary  />
  
      </div>
+
+
+
  </div>
 </template>
 <script>
@@ -35,7 +38,8 @@ export default {
        kong1:'',
        kong2:'',
        kong3:'',
-       datas:[]
+       datas:[],
+       title:''
 
     }  
   },
@@ -67,7 +71,13 @@ export default {
   
   },
   mounted(){
-     
+        axios.get(this.siteUrl+'title').then((data)=>{
+       
+           this.title=data.data[0].title;
+         
+         },(err)=>{
+          
+         }) 
   }, 
   watch: {
     topPopup (val) {

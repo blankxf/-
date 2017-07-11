@@ -5,6 +5,7 @@ import Xg from './xg.vue';
 import Xq from './xq.vue';
 import Login from './login.vue';
 import Admin from './admin.vue';
+import Xgtitle from './xgtitle.vue';
 Vue.use(Router);
 
 var router=new Router({
@@ -16,7 +17,8 @@ var router=new Router({
 	   {path:"/xg/:_id",component:Xg},
 	   {path:"/xq",component:Xq},
 	   {path:"/login",component:Login},
-	   {path:"/admin",component:Admin}
+	   {path:"/admin",component:Admin},
+	   {path:"/xgtitle/:_id",component:Xgtitle}
 	]
 })
 export default router;

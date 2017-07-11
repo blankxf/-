@@ -1,6 +1,19 @@
 <template>
   <div>
     <h1>后台管理 <a @click="loginOut">点击退出</a></h1>  
+
+    <mu-table>
+        <mu-tr>
+            <mu-th tooltip="当前标题">当前标题</mu-th>
+            <mu-th tooltip="操作">操作</mu-th>
+        </mu-tr>
+        <mu-tr>
+            <mu-td>{{titles.title}}</mu-td>
+            <mu-td><a :href="'#/xgtitle/'+titles._id">修改</a></mu-td>
+        </mu-tr>
+    </mu-table>
+
+    <h1>报名详情</h1>
     <mu-table :showCheckbox="false">
         <mu-thead slot="header" >
           <mu-tr>
@@ -24,13 +37,24 @@
           </mu-tr>
         </mu-tbody>
 
-        <mu-popup position="top" :overlay="false" popupClass="demo-popup-top" :open="topPopup">
-        删除成功
-      </mu-popup>
+  
     </mu-table>
+     <p v-show="datas.length==0">暂且无人报名...</p>
+     <div class="button">
+      <mu-raised-button v-show="datas.length!==0" label="删除全部" @click="open" secondary/>
+      <mu-dialog :open="dialog" title="提示" @close="close">
+        你确定删除全部报名信息吗？
+        <mu-flat-button slot="actions" @click="close" primary label="取消"/>
+        <mu-flat-button slot="actions" primary @click="close" label="确定"/>
+      </mu-dialog>
+    </div>
 
     <mu-pagination :total="total" :current="current" @pageChange="handleClick">
   </mu-pagination>
+
+
+   
+
  </div>
 </template>
 <script>
@@ -39,17 +63,43 @@
  
       data () {
         return {
-          topPopup: false,
-          _id:'',
+          dialog: false,
           datas:{},
           zong:0,
           total: 70,
-          current: 1
+          current: 1,
+          titles:{}
+
       
         }  
       }, 
       methods: {
-         handleClick (newIndex) {
+      
+          open () {
+            this.dialog = true
+          },
+          close () {
+            this.dialog = false;
+              axios.get(`${this.siteUrl}removeall`).then((data)=>{
+                   alert("全部删除成功");
+
+
+             },(err)=>{
+                   
+             })
+
+                 axios.get(this.siteUrl+'all').then((data)=>{
+                   this.datas=data.data;
+                 
+                 },(err)=>{
+                  
+                 }) 
+             //获取total
+               this.total=10;
+
+
+          },
+               handleClick (newIndex) {
               this.newIndex=newIndex
               axios.get(`${this.siteUrl}all/?page=${newIndex}`).then((data)=>{
                        this.datas=data.data;                             
@@ -85,6 +135,13 @@
     }
   },
     mounted(){
+         axios.get(this.siteUrl+'title').then((data)=>{
+      
+          this.titles=data.data[0];
+         
+         },(err)=>{
+          
+         }) 
              
          axios.get(this.siteUrl+'all').then((data)=>{
            this.datas=data.data;
@@ -113,4 +170,10 @@
 
   }
 </script>
+
+<style>
+   .button{
+    margin-left: 70%;
+   }
+</style>
 
