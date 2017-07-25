@@ -2,8 +2,10 @@
   <div>
        
       <div class="header">
-           <img src="./assets/xf.jpg" alt="">
+           <img :src="siteUrl+'1.jpg'" alt="">
+
            <h3>{{title}}</h3>
+
       </div>
      <div class="main">
       昵称：
@@ -39,7 +41,8 @@ export default {
        kong2:'',
        kong3:'',
        datas:[],
-       title:''
+       title:'',
+       img:''
 
     }  
   },
@@ -72,21 +75,14 @@ export default {
   },
   mounted(){
         axios.get(this.siteUrl+'title').then((data)=>{
+
+           this.img=data.data[0].img;
        
            this.title=data.data[0].title;
          
          },(err)=>{
           
          }) 
-  }, 
-  watch: {
-    topPopup (val) {
-      if (val) {
-        setTimeout(() => {
-          this.topPopup = false
-        }, 2000)
-      }
-    }
   }
 }
 </script>
@@ -110,6 +106,8 @@ body{
    .main{
     text-align: center;
    }
+
+  
 
 
 

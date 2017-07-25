@@ -98,6 +98,13 @@
       text-align: center;
    }
 
+ .mu-td, .mu-th{
+    text-align: center;
+   }
+
+    mu-td, mu-th{
+    text-align: center;
+   }
 
 
 

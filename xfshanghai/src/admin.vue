@@ -42,9 +42,9 @@
      <p v-show="datas.length==0">暂且无人报名...</p>
      <div class="button">
       <mu-raised-button v-show="datas.length!==0" label="删除全部" @click="open" secondary/>
-      <mu-dialog :open="dialog" title="提示" @close="close">
+      <mu-dialog :open="dialog" title="提示" >
         你确定删除全部报名信息吗？
-        <mu-flat-button slot="actions" @click="close" primary label="取消"/>
+        <mu-flat-button slot="actions" @click="quxiao" primary label="取消"/>
         <mu-flat-button slot="actions" primary @click="close" label="确定"/>
       </mu-dialog>
     </div>
@@ -77,6 +77,9 @@
       
           open () {
             this.dialog = true
+          },
+          quxiao(){
+            this.dialog = false
           },
           close () {
             this.dialog = false;

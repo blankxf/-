@@ -5,7 +5,7 @@ import router from './router.js'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 
-Vue.prototype.siteUrl="https://shenyuxf.top:5000/"
+Vue.prototype.siteUrl="https://shenyuxf.top/"
 
 
 
